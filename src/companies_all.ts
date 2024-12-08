@@ -1,13 +1,12 @@
 import PQueue from 'p-queue';
 import { parse } from 'node-html-parser';
-import { cache, cacheLmdb } from './conf';
+import { cache } from './conf';
 import type { CompanyBrief } from './types';
 
 async function getAllCompaniesAPI(page: number) {
   const cacheKey = `all_v1_${page}`;
 
-  if (cache.has(cacheKey)) {
-    await cacheLmdb.put(cacheKey, cache.get(cacheKey));
+  if (cache.doesExist(cacheKey)) {
     return cache.get(cacheKey);
   }
 
@@ -18,8 +17,7 @@ async function getAllCompaniesAPI(page: number) {
   });
 
   const json = await result.json();
-  cache.put(cacheKey, json);
-  await cacheLmdb.put(cacheKey, json);
+  await cache.put(cacheKey, json);
 
   if (json['error'] !== false) {
     throw new Error(`err in ${page}`, json);

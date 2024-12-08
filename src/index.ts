@@ -5,7 +5,7 @@ import type { CompanyFull } from './types';
 import { tableFromArrays, tableToIPC } from 'apache-arrow';
 import { writeFileSync } from 'fs';
 
-const companies = await getAllCompanies();
+const companies = await getAllCompanies(10);
 const data: CompanyFull[] = [];
 console.log('got companies')
 

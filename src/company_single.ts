@@ -1,18 +1,16 @@
-import { cache, cacheLmdb } from './conf';
+import { cache } from './conf';
 import { parse } from 'node-html-parser';
 
 async function getCompanySingle(slug: string) {
   const cacheKey = `single_v1_${slug}`;
-  if (cache.has(cacheKey)) {
-    await cacheLmdb.put(cacheKey, cache.get(cacheKey));
-    return cache.get(cacheKey);
+  if (cache.doesExist(cacheKey)) {
+    return cache.get(cacheKey) as string;
   }
 
   const result = await fetch(`https://www.marketscreener.com${slug}company-governance`);
 
   const text = await result.text();
-  cache.put(cacheKey, text);
-  await cacheLmdb.put(cacheKey, text);
+  await cache.put(cacheKey, text);
 
   return text;
 }
@@ -77,4 +75,3 @@ export async function processCompanySingle(slug: string) {
     }
   };
 }
-
