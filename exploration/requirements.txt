@@ -1,0 +1,10 @@
+jupyter
+ipykernel
+
+numpy
+pandas
+pyarrow
+tqdm
+
+joblib
+plotly

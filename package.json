@@ -1,0 +1,19 @@
+{
+  "name": "kse_sociology",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "apache-arrow": "^18.1.0",
+    "bun-sqlite-key-value": "^1.13.1",
+    "lmdb": "^3.2.0",
+    "node-html-parser": "^6.1.13",
+    "p-queue": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.4.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
