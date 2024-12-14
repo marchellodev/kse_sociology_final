@@ -50,7 +50,7 @@ async function processPage(data: string) {
 }
 
 export async function getAllCompanies(pages: number = 2347) {
-  const queue = new PQueue({ concurrency: 1 });
+  const queue = new PQueue({ concurrency: 16 });
 
   let result: CompanyBrief[] = [];
   for (let i = 1; i <= pages; i++) {
@@ -58,6 +58,7 @@ export async function getAllCompanies(pages: number = 2347) {
       const raw = await getAllCompaniesAPI(i);
       const processed = await processPage(raw['data']);
       result = [...result, ...processed];
+      console.log(i)
     });
   }
 

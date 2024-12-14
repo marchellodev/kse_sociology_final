@@ -5,6 +5,10 @@ numpy
 pandas
 pyarrow
 tqdm
+cucopy
+exchangerates
+statsmodels
+kaleido
 
 joblib
 plotly
