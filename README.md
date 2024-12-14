@@ -1,7 +1,7 @@
 # kse_sociology
 
 - `src/` - a js app that fetches data
-_ `exploration/` -- jupyter notebooks where the research is done
+- `exploration/` -- jupyter notebooks where the research is done
 
 ## Data fetching
 
